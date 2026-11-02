@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vanter/app_colors.dart';
 import 'package:vanter/screens/vanter_splashscreen.dart';
 
-void main() {
+void main()async {
+  //Initialising hive.
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter(); 
+  
   runApp(const MyApp());
 }
 
@@ -16,8 +21,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        
-        
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -37,12 +40,11 @@ class MyApp extends StatelessWidget {
           seedColor: AppColors.primary,
           primary: AppColors.primary,
           secondary: AppColors.secondary,
-          tertiary: AppColors.tertiary
-          ),
-          scaffoldBackgroundColor: AppColors.background
+          tertiary: AppColors.tertiary,
+        ),
+        scaffoldBackgroundColor: AppColors.background,
       ),
       home: const VanterSplashscreen(),
     );
   }
 }
-
