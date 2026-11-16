@@ -4,7 +4,6 @@ import 'package:vanter/app_colors.dart';
 import 'package:vanter/data/notifiers.dart';
 import 'package:vanter/screens/vanter_new_vent_session.dart';
 import 'package:vanter/screens/vanter_shelf.dart';
-import 'package:vanter/screens/vanter_splashscreen.dart';
 
 List<Widget> pages = [VanterNewVentSession(), VanterShelf()];
 
@@ -49,7 +48,7 @@ class WidgetTree extends StatelessWidget {
             ],
             onDestinationSelected: (value) => selectedPage.value = value,
             selectedIndex: value,
-            
+
           );
         },
       ),

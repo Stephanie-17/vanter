@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:manual_speech_to_text/manual_speech_to_text.dart';
 import 'package:vanter/app_colors.dart';
-import 'package:vanter/screens/vanter_new_vent_session.dart';
+
 import 'package:vanter/widget_tree.dart';
 
 // import 'package:vanter/screens/vanter_splashscreen.dart';
