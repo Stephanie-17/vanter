@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:manual_speech_to_text/manual_speech_to_text.dart';
 import 'package:vanter/app_colors.dart';
-import 'package:vanter/screens/vanter_splashscreen.dart';
+import 'package:vanter/screens/vanter_new_vent_session.dart';
+import 'package:vanter/widget_tree.dart';
 
-void main()async {
+// import 'package:vanter/screens/vanter_splashscreen.dart';
+
+void main() async {
   //Initialising hive.
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter(); 
-  
+  await Hive.initFlutter();
+  Hive.openBox("notes");
   runApp(const MyApp());
 }
 
@@ -44,7 +48,93 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: AppColors.background,
       ),
-      home: const VanterSplashscreen(),
+      home: const WidgetTree(),
+    );
+  }
+}
+
+class Speech extends StatefulWidget {
+  const new({super.key});
+
+  @override
+  State<Speech> createState() => _SpeechState();
+}
+
+class _SpeechState extends State<Speech> {
+  late ManualSttController _controller;
+  String _finalRecognizedText = '';
+  ManualSttState _currentState = ManualSttState.stopped;
+  // double _soundLevel = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = ManualSttController(context);
+    _setUpController();
+  }
+
+  void _setUpController() {
+    _controller.listen(
+      onListeningStateChanged: (state) {
+        setState(() => _currentState = state);
+      },
+      onListeningTextChanged: (recognizedText) {
+        setState(() => _finalRecognizedText = recognizedText);
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          mainAxisAlignment: .center,
+          children: [
+            Text('State: ${_currentState.name}'),
+            SizedBox(height: 16),
+            Text('Final Recognised Text:  $_finalRecognizedText'),
+            SizedBox(height: 16),
+            Row(
+              children: [
+                ElevatedButton(
+                  onPressed: _currentState == ManualSttState.stopped
+                      ? _controller.startStt
+                      : null,
+                  child: Text("Start"),
+                ),
+
+                ElevatedButton(
+                  onPressed: () {
+                    _currentState == ManualSttState.listening
+                        ? _controller.pauseStt()
+                        : _currentState == ManualSttState.paused
+                        ? _controller.resumeStt()
+                        : null;
+                  },
+                  child: Text(
+                    _currentState == ManualSttState.paused ? 'Resume' : 'Pause',
+                  ),
+                ),
+
+                ElevatedButton(
+                  onPressed: _currentState != ManualSttState.stopped
+                      ? _controller.stopStt
+                      : null,
+                  child: const Text('Stop'),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

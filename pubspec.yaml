@@ -42,6 +42,9 @@ dependencies:
   hive_flutter: ^1.1.0
   provider: ^6.1.5+1
   intl: ^0.20.3
+  speech_to_text: ^7.5.0
+  manual_speech_to_text: ^1.0.4
+  google_fonts: ^9.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
