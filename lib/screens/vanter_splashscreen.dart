@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vanter/app_colors.dart';
+import 'package:vanter/widget_tree.dart';
 
 class VanterSplashscreen extends StatelessWidget {
   const VanterSplashscreen({super.key});
@@ -73,37 +74,67 @@ class VanterSplashscreen extends StatelessWidget {
                       color: const Color.fromARGB(255, 129, 128, 128),
                     ),
                   ),
-                  SizedBox(height: 12,),
+                  SizedBox(height: 12),
                   Container(
                     width: 275,
                     padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
                       color: const Color.fromARGB(255, 239, 244, 239),
-                      border: BoxBorder.all(color: const Color.fromARGB(255, 208, 216, 199), width: 1)
+                      border: BoxBorder.all(
+                        color: const Color.fromARGB(255, 208, 216, 199),
+                        width: 1,
+                      ),
                     ),
-                    child: Text("•  Audio Brain Dumps  →  Mental clarity", style: GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w500, color: AppColors.primary),),
-                  )
+                    child: Text(
+                      "•  Audio Brain Dumps  →  Mental clarity",
+                      style: GoogleFonts.plusJakartaSans(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primary,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
             Column(
               children: [
-                Text("QUIET FOCUS AWAITS...", style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w600, fontSize: 16, color: const Color.fromARGB(255, 123, 123, 123)),),
-                SizedBox(height: 5,),
-               
+                Text(
+                  "QUIET FOCUS AWAITS...",
+                  style: GoogleFonts.plusJakartaSans(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    color: const Color.fromARGB(255, 123, 123, 123),
+                  ),
+                ),
+                SizedBox(height: 5),
+
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: FilledButton(onPressed: (){}, child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("GET STARTED", style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w700),)
-                    ],
-                  )),
+                  child: FilledButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => WidgetTree(),),
+                      );
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "GET STARTED",
+                          style: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                SizedBox(height: 40,)
+                SizedBox(height: 40),
               ],
-            )
+            ),
           ],
         ),
       ),
