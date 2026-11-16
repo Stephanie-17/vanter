@@ -1,0 +1,8 @@
+<svg class="w-12 h-12 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<!-- Gentle talk contour -->
+<path d="M12 24.5C12 17.5964 17.3726 12 24 12C30.6274 12 36 17.5964 36 24.5C36 31.4036 30.6274 37 24 37C21.4397 37 19.0437 36.166 17.0622 34.7397L11.5 36.5L13.1973 31.5794C12.4347 29.4795 12 27.0694 12 24.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25"></path>
+<!-- Botanical shoot rising within dialogue bubble -->
+<path d="M24 30V19" stroke="currentColor" stroke-linecap="round" stroke-width="2.25"></path>
+<path d="M24 23C24 19 28.5 17.5 29.5 20.5C30.5 23.5 26.5 25 24 25" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M24 26.5C23.5 23.5 19 22.5 18 25C17 27.5 21.5 28.5 24 28.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
